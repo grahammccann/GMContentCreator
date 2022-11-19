@@ -4,12 +4,16 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 
-	<PublishSingleFile>true</PublishSingleFile>
-	<!-- <SelfContained>true</SelfContained> -->
-	<!-- <RuntimeIdentifier>win-x64</RuntimeIdentifier> -->
-	<PublishReadyToRun>true</PublishReadyToRun>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <RootNamespace>gm_content_creator</RootNamespace>
+    <AssemblyName>gm-content-creator</AssemblyName>
+    <ApplicationIcon>gm-content-creator.ico</ApplicationIcon>
+
+    <PublishSingleFile>true</PublishSingleFile>
+    <!-- <SelfContained>true</SelfContained> -->
+    <!-- <RuntimeIdentifier>win-x64</RuntimeIdentifier> -->
+    <PublishReadyToRun>true</PublishReadyToRun>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,10 +27,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="gm-content-creator.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Remove="Properties\Resources.Designer.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
