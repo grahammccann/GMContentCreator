@@ -13,6 +13,10 @@ namespace gm_content_creator
 
         public const string SOFTWARE = "GM Content Creator";
 
+        /// <summary>
+        /// This function displays messages to the user in a generic way.
+        /// </summary>
+        /// <param name="message"></param>
         public static void ReturnMessage(string message)
         {
             MessageBox.Show(message, SOFTWARE + " - v" + Application.ProductVersion, MessageBoxButtons.OK, MessageBoxIcon.Information);
