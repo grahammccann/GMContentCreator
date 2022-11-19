@@ -457,4 +457,3 @@
         private System.Windows.Forms.Button BtnLoadSynonymsFile;
     }
 }
-

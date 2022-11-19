@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace gm_content_creator
 {
     internal class ClassHelpers
     {
-
         public const string SOFTWARE = "GM Content Creator";
 
         /// <summary>
@@ -37,6 +32,5 @@ namespace gm_content_creator
                 DebugLogging("[" + DateTime.Now + "]-[" + ex.ToString() + "]");
             }
         }
-
     }
 }
