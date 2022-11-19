@@ -39,10 +39,11 @@ namespace gm_content_creator
 
         public void OnLoadSetup(string appName) {
             try {
+                if (!Directory.Exists("logs")) { Directory.CreateDirectory("logs"); }
+
                 Text = appName + " - v" + Application.ProductVersion + @" - graham23s@Hotmail.com";
                 ComboBoxSynonymFile.Items.AddRange(Directory.GetFiles(@"synonyms"));
                 ComboBoxSynonymFile.SelectedIndex = 0;
-                if (!Directory.Exists("logs")) { Directory.CreateDirectory("logs"); }
                 if (!Directory.Exists("articles")) { Directory.CreateDirectory("articles"); }
             }
             catch (Exception ex)
