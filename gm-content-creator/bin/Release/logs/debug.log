@@ -1,0 +1,110 @@
+[18/11/2022 19:24:35]-[System.InvalidOperationException: Cross-thread operation not valid: Control 'ComboBoxSynonymFile' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.ComboBox.get_SelectedIndex()
+   at System.Windows.Forms.ComboBox.get_SelectedItem()
+   at System.Windows.Forms.ComboBox.get_Text()
+   at gm_content_creator.FormMain.<OnLoadDataGridDataIntoView>b__3_0() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 34
+   at System.Threading.Tasks.Task.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at gm_content_creator.FormMain.<OnLoadDataGridDataIntoView>d__3.MoveNext() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 33]
+[18/11/2022 19:24:54]-[System.InvalidOperationException: Cross-thread operation not valid: Control 'ComboBoxSynonymFile' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.ComboBox.get_SelectedIndex()
+   at System.Windows.Forms.ComboBox.get_SelectedItem()
+   at System.Windows.Forms.ComboBox.get_Text()
+   at gm_content_creator.FormMain.<OnLoadDataGridDataIntoView>b__3_0() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 34
+   at System.Threading.Tasks.Task.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at gm_content_creator.FormMain.<OnLoadDataGridDataIntoView>d__3.MoveNext() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 33]
+[18/11/2022 19:24:58]-[System.InvalidOperationException: Cross-thread operation not valid: Control 'ComboBoxSynonymFile' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.ComboBox.get_SelectedIndex()
+   at System.Windows.Forms.ComboBox.get_SelectedItem()
+   at System.Windows.Forms.ComboBox.get_Text()
+   at gm_content_creator.FormMain.<OnLoadDataGridDataIntoView>b__3_0() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 34
+   at System.Threading.Tasks.Task.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at gm_content_creator.FormMain.<OnLoadDataGridDataIntoView>d__3.MoveNext() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 33]
+[18/11/2022 19:29:11]-[System.InvalidOperationException: Cross-thread operation not valid: Control 'DataGridSynonymsView' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.DataGridView.FlushDisplayedChanged()
+   at System.Windows.Forms.DataGridView.PerformLayoutPrivate(Boolean useRowShortcut, Boolean computeVisibleRows, Boolean invalidInAdjustFillingColumns, Boolean repositionEditingControl)
+   at System.Windows.Forms.DataGridView.ResetUIState(Boolean useRowShortcut, Boolean computeVisibleRows)
+   at System.Windows.Forms.DataGridViewRowCollection.OnCollectionChanged_PreNotification(CollectionChangeAction cca, Int32 rowIndex, Int32 rowCount, DataGridViewRow& dataGridViewRow, Boolean changeIsInsertion)
+   at System.Windows.Forms.DataGridViewRowCollection.OnCollectionChanged(CollectionChangeEventArgs e, Int32 rowIndex, Int32 rowCount)
+   at System.Windows.Forms.DataGridViewRowCollection.AddInternal(Boolean newRow, Object[] values)
+   at System.Windows.Forms.DataGridViewRowCollection.Add(Object[] values)
+   at gm_content_creator.FormMain.<>c__DisplayClass3_0.<OnLoadDataGridDataIntoView>b__0() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 37
+   at System.Threading.Tasks.Task.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at gm_content_creator.FormMain.<OnLoadDataGridDataIntoView>d__3.MoveNext() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 33]
+[18/11/2022 19:35:34]-[System.InvalidOperationException: Cross-thread operation not valid: Control 'DataGridSynonymsView' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.DataGridView.FlushDisplayedChanged()
+   at System.Windows.Forms.DataGridView.PerformLayoutPrivate(Boolean useRowShortcut, Boolean computeVisibleRows, Boolean invalidInAdjustFillingColumns, Boolean repositionEditingControl)
+   at System.Windows.Forms.DataGridView.ResetUIState(Boolean useRowShortcut, Boolean computeVisibleRows)
+   at System.Windows.Forms.DataGridViewRowCollection.OnCollectionChanged_PreNotification(CollectionChangeAction cca, Int32 rowIndex, Int32 rowCount, DataGridViewRow& dataGridViewRow, Boolean changeIsInsertion)
+   at System.Windows.Forms.DataGridViewRowCollection.OnCollectionChanged(CollectionChangeEventArgs e, Int32 rowIndex, Int32 rowCount)
+   at System.Windows.Forms.DataGridViewRowCollection.AddInternal(Boolean newRow, Object[] values)
+   at System.Windows.Forms.DataGridViewRowCollection.Add(Object[] values)
+   at gm_content_creator.FormMain.<>c__DisplayClass3_0.<OnLoadDataGridDataIntoView>b__0() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 37
+   at System.Threading.Tasks.Task.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at gm_content_creator.FormMain.<OnLoadDataGridDataIntoView>d__3.MoveNext() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 33]
+[18/11/2022 23:09:47]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 30]
+[18/11/2022 23:10:30]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 30]
+[18/11/2022 23:11:34]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 30]
+[18/11/2022 23:12:00]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 30]
+[18/11/2022 23:15:08]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 30]
+[18/11/2022 23:15:22]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 30]
+[18/11/2022 23:18:23]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 30]
+[18/11/2022 23:19:43]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 30]
+[18/11/2022 23:20:03]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 30]
+[18/11/2022 23:20:41]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 30]
+[18/11/2022 23:31:30]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 30]
+[18/11/2022 23:31:55]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 30]
+[18/11/2022 23:32:40]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 30]
+[18/11/2022 23:32:54]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 30]
+[19/11/2022 08:55:44]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 31]
+[19/11/2022 09:03:45]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 31]
+[19/11/2022 09:03:50]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 31]
+[19/11/2022 09:04:48]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 31]
+[19/11/2022 09:05:44]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 31]
+[19/11/2022 09:05:51]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 31]
+[19/11/2022 09:07:31]-[System.NullReferenceException: Object reference not set to an instance of an object.
+   at gm_content_creator.FormMain.GetARandomArticleForTesting() in C:\Users\Graham\Desktop\files\programming\Languages\CSharp\gm-content-creator\gm-content-creator\FormMain.cs:line 31]
