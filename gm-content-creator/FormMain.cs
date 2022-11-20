@@ -1,15 +1,9 @@
-﻿using HtmlAgilityPack;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static gm_content_creator.SpinTax;
 
 namespace gm_content_creator
 {
@@ -39,10 +33,11 @@ namespace gm_content_creator
 
         public void OnLoadSetup(string appName) {
             try {
+                if (!Directory.Exists("logs")) { Directory.CreateDirectory("logs"); }
+
                 Text = appName + " - v" + Application.ProductVersion + @" - graham23s@Hotmail.com";
                 ComboBoxSynonymFile.Items.AddRange(Directory.GetFiles(@"synonyms"));
                 ComboBoxSynonymFile.SelectedIndex = 0;
-                if (!Directory.Exists("logs")) { Directory.CreateDirectory("logs"); }
                 if (!Directory.Exists("articles")) { Directory.CreateDirectory("articles"); }
             }
             catch (Exception ex)
@@ -110,5 +105,14 @@ namespace gm_content_creator
             }
         }
 
+        private void BtnSpin_Click(object sender, EventArgs e)
+        {
+            CreateSpinTax(TxtBoxArticleTitle, RichTextBoxArticleBody, DataGridSynonymsView);
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
