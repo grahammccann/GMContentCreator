@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,6 +41,8 @@
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.RichTextBoxArticleBody = new System.Windows.Forms.RichTextBox();
+            this.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.CopyTextToTheClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LblBody = new System.Windows.Forms.Label();
             this.TxtBoxArticleTitle = new System.Windows.Forms.TextBox();
             this.LblTitle = new System.Windows.Forms.Label();
@@ -62,10 +64,13 @@
             this.LblSelectSynonymsFile = new System.Windows.Forms.Label();
             this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.BackgroundWorkerImportSynonymsFile = new System.ComponentModel.BackgroundWorker();
+            this.BackgroundWorkerSpinTax = new System.ComponentModel.BackgroundWorker();
+            this.PasteTextFromTheClipboard = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.ContextMenuStrip.SuspendLayout();
             this.GroupBoxArticleOptions.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridSynonymsView)).BeginInit();
@@ -96,9 +101,9 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.exitToolStripMenuItem.Text = "Exit ...";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
@@ -113,7 +118,7 @@
             this.downloadARandomArticleToolStripMenuItem.Name = "downloadARandomArticleToolStripMenuItem";
             this.downloadARandomArticleToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
             this.downloadARandomArticleToolStripMenuItem.Text = "Download a random article ...";
-            this.downloadARandomArticleToolStripMenuItem.Click += new System.EventHandler(this.downloadARandomArticleToolStripMenuItem_Click);
+            this.downloadARandomArticleToolStripMenuItem.Click += new System.EventHandler(this.DownloadARandomArticleToolStripMenuItem_Click);
             // 
             // StatusStrip
             // 
@@ -165,11 +170,27 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RichTextBoxArticleBody.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.RichTextBoxArticleBody.ContextMenuStrip = this.ContextMenuStrip;
             this.RichTextBoxArticleBody.Location = new System.Drawing.Point(11, 168);
             this.RichTextBoxArticleBody.Name = "RichTextBoxArticleBody";
             this.RichTextBoxArticleBody.Size = new System.Drawing.Size(906, 374);
             this.RichTextBoxArticleBody.TabIndex = 4;
             this.RichTextBoxArticleBody.Text = "";
+            // 
+            // ContextMenuStrip
+            // 
+            this.ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CopyTextToTheClipboardToolStripMenuItem,
+            this.PasteTextFromTheClipboard});
+            this.ContextMenuStrip.Name = "ContextMenuStrip";
+            this.ContextMenuStrip.Size = new System.Drawing.Size(240, 70);
+            // 
+            // CopyTextToTheClipboardToolStripMenuItem
+            // 
+            this.CopyTextToTheClipboardToolStripMenuItem.Name = "CopyTextToTheClipboardToolStripMenuItem";
+            this.CopyTextToTheClipboardToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.CopyTextToTheClipboardToolStripMenuItem.Text = "Copy text to the clipboard ...";
+            this.CopyTextToTheClipboardToolStripMenuItem.Click += new System.EventHandler(this.CopyTextToTheClipboardToolStripMenuItem_Click);
             // 
             // LblBody
             // 
@@ -298,14 +319,14 @@
             this.colSynEntry,
             this.colSynEdit,
             this.colSynCheckBox});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGreen;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridSynonymsView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightGreen;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridSynonymsView.DefaultCellStyle = dataGridViewCellStyle2;
             this.DataGridSynonymsView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataGridSynonymsView.Location = new System.Drawing.Point(3, 103);
             this.DataGridSynonymsView.Name = "DataGridSynonymsView";
@@ -390,6 +411,18 @@
             this.BackgroundWorkerImportSynonymsFile.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorkerImportSynonymsFile_DoWork);
             this.BackgroundWorkerImportSynonymsFile.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorkerImportSynonymsFile_RunWorkerCompleted);
             // 
+            // BackgroundWorkerSpinTax
+            // 
+            this.BackgroundWorkerSpinTax.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorkerSpinTax_DoWork);
+            this.BackgroundWorkerSpinTax.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorkerSpinTax_RunWorkerCompleted);
+            // 
+            // PasteTextFromTheClipboard
+            // 
+            this.PasteTextFromTheClipboard.Name = "PasteTextFromTheClipboard";
+            this.PasteTextFromTheClipboard.Size = new System.Drawing.Size(239, 22);
+            this.PasteTextFromTheClipboard.Text = "Paste text from the clipboard ...";
+            this.PasteTextFromTheClipboard.Click += new System.EventHandler(this.PasteTextFromTheClipboard_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -413,6 +446,7 @@
             this.TabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.ContextMenuStrip.ResumeLayout(false);
             this.GroupBoxArticleOptions.ResumeLayout(false);
             this.GroupBoxArticleOptions.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -457,5 +491,9 @@
         private System.Windows.Forms.ToolStripMenuItem downloadARandomArticleToolStripMenuItem;
         private System.Windows.Forms.ImageList ImageList;
         private System.Windows.Forms.Button BtnLoadSynonymsFile;
+        private System.ComponentModel.BackgroundWorker BackgroundWorkerSpinTax;
+        private System.Windows.Forms.ContextMenuStrip ContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem CopyTextToTheClipboardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PasteTextFromTheClipboard;
     }
 }

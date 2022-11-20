@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace gm_content_creator
@@ -31,6 +32,19 @@ namespace gm_content_creator
             {
                 DebugLogging("[" + DateTime.Now + "]-[" + ex.ToString() + "]");
             }
+        }
+
+        public static int CountSpintaxBraces(string sourceToCount, char characterToCount) {
+            int count = 0;
+            try
+            {
+                count = sourceToCount.Count(f => f == characterToCount);
+            }
+            catch (Exception ex)
+            {
+                DebugLogging("[" + DateTime.Now + "]-[" + ex.ToString() + "]");
+            }
+            return count;
         }
     }
 }

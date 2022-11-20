@@ -18,10 +18,10 @@ namespace gm_content_creator
             try
             {
                 string html = string.Empty;
-                using (WebClient wc = new WebClient())
+                using (WebClient wc = new())
                 {
                     HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
-                    doc.LoadHtml(wc.DownloadString("https://www.articleseen.com/Article_Invisible-Braces-A-Comprehensive-Guide_330330.aspx"));
+                    doc.LoadHtml(wc.DownloadString("https://www.articleseen.com/Article_5-Tips-to-Prepare-Your-Air-Conditioner-for-Christmas-(Summer)_330327.aspx"));
                     TxtBoxArticleTitle.Text = doc.DocumentNode.SelectSingleNode("//table[@id='tblDetails']/tr/td/h3").InnerText.Trim();
                     RichTextBoxArticleBody.Text = doc.DocumentNode.SelectSingleNode("//span[@class='Bodycontent']").InnerText;
                 }
@@ -34,7 +34,6 @@ namespace gm_content_creator
         public void OnLoadSetup(string appName) {
             try {
                 if (!Directory.Exists("logs")) { Directory.CreateDirectory("logs"); }
-
                 Text = appName + " - v" + Application.ProductVersion + @" - graham23s@Hotmail.com";
                 ComboBoxSynonymFile.Items.AddRange(Directory.GetFiles(@"synonyms"));
                 ComboBoxSynonymFile.SelectedIndex = 0;
@@ -72,11 +71,33 @@ namespace gm_content_creator
             else
             {
                 ClassHelpers.ReturnMessage("Import complete!");
-                DataGridSynonymsView.ScrollBars = ScrollBars.Vertical;
             }
         }
 
-        private void downloadARandomArticleToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void BackgroundWorkerSpinTax_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if ((string)e.Argument == "do_spintax")
+            {
+                CreateSpinTax(TxtBoxArticleTitle, RichTextBoxArticleBody, DataGridSynonymsView);
+            }
+        }
+
+        public void BackgroundWorkerSpinTax_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                ClassHelpers.ReturnMessage(string.Format("Thread error: {0} ", e.Error));
+            }
+            else
+            {
+                BtnSpin.Enabled = true;
+                ClassHelpers.ReturnMessage("TITLE:\n\n" + ClassHelpers.CountSpintaxBraces(TxtBoxArticleTitle.Text, '{').ToString() + " => " + ClassHelpers.CountSpintaxBraces(TxtBoxArticleTitle.Text, '}').ToString());
+                ClassHelpers.ReturnMessage("BODY:\n\n" + ClassHelpers.CountSpintaxBraces(RichTextBoxArticleBody.Text, '{').ToString() + " => " + ClassHelpers.CountSpintaxBraces(RichTextBoxArticleBody.Text, '}').ToString());
+            }
+        }
+
+        private void DownloadARandomArticleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GetARandomArticleForTesting();
         }
@@ -107,12 +128,27 @@ namespace gm_content_creator
 
         private void BtnSpin_Click(object sender, EventArgs e)
         {
-            CreateSpinTax(TxtBoxArticleTitle, RichTextBoxArticleBody, DataGridSynonymsView);
+            if (BackgroundWorkerSpinTax.IsBusy != true)
+            {
+                BtnSpin.Enabled = false;
+                BackgroundWorkerSpinTax.RunWorkerAsync("do_spintax");
+            }
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
+
+        private void CopyTextToTheClipboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(RichTextBoxArticleBody.SelectedText);
+        }
+
+        private void PasteTextFromTheClipboard_Click(object sender, EventArgs e)
+        {
+            RichTextBoxArticleBody.Paste();
+        }
+
     }
 }

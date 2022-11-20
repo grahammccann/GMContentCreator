@@ -8,8 +8,7 @@ namespace gm_content_creator
 {
     internal static class SpinTax
     {
-        public static void CreateSpinTax(TextBox titleBox, RichTextBox bodyBox,
-            DataGridView synonymsView)
+        public static void CreateSpinTax(TextBox titleBox, RichTextBox bodyBox, DataGridView synonymsView)
         {
             if (synonymsView.RowCount < 1)
             {
@@ -19,7 +18,7 @@ namespace gm_content_creator
 
             if (titleBox.TextLength < 1 || bodyBox.TextLength < 1)
             {
-                ClassHelpers.ReturnMessage("Please load an article text first!");
+                ClassHelpers.ReturnMessage("Please load an article first!");
                 return;
             }
 
@@ -88,5 +87,6 @@ namespace gm_content_creator
             }
             return writer.ToString().Trim();
         }
+
     }
 }
