@@ -92,8 +92,8 @@ namespace gm_content_creator
             else
             {
                 BtnSpin.Enabled = true;
-                ClassHelpers.ReturnMessage("TITLE:\n\n" + ClassHelpers.CountSpintaxBraces(TxtBoxArticleTitle.Text, '{').ToString() + " => " + ClassHelpers.CountSpintaxBraces(TxtBoxArticleTitle.Text, '}').ToString());
-                ClassHelpers.ReturnMessage("BODY:\n\n" + ClassHelpers.CountSpintaxBraces(RichTextBoxArticleBody.Text, '{').ToString() + " => " + ClassHelpers.CountSpintaxBraces(RichTextBoxArticleBody.Text, '}').ToString());
+                ClassHelpers.ReturnMessage("TITLE:\n\n" + ClassHelpers.CountSpintaxBraces(TxtBoxArticleTitle.Text, '{').ToString() + " > " + ClassHelpers.CountSpintaxBraces(TxtBoxArticleTitle.Text, '}').ToString());
+                ClassHelpers.ReturnMessage("BODY:\n\n" + ClassHelpers.CountSpintaxBraces(RichTextBoxArticleBody.Text, '{').ToString() + " > " + ClassHelpers.CountSpintaxBraces(RichTextBoxArticleBody.Text, '}').ToString());
             }
         }
 
@@ -148,6 +148,35 @@ namespace gm_content_creator
         private void PasteTextFromTheClipboard_Click(object sender, EventArgs e)
         {
             RichTextBoxArticleBody.Paste();
+        }
+
+        private void BtnExportArticle_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(TxtBoxArticleTitle.Text) || string.IsNullOrEmpty(RichTextBoxArticleBody.Text)) {
+                ClassHelpers.ReturnMessage("No article data to export!");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(TxtBoxKeyword.Text)) {
+                ClassHelpers.ReturnMessage("Enter a keyword related to your article!");
+                return;
+            }
+
+            try {
+                if (!Directory.Exists(@"articles\" + TxtBoxKeyword.Text))
+                {
+                    Directory.CreateDirectory(@"articles\" + TxtBoxKeyword.Text);
+                }
+                else
+                {
+                    File.WriteAllText(@"articles\" + TxtBoxKeyword.Text + "\\article.txt", TxtBoxArticleTitle.Text + Environment.NewLine + Environment.NewLine + RichTextBoxArticleBody.Text);
+                    ClassHelpers.ReturnMessage(@"articles\" + TxtBoxKeyword.Text + "\\article.txt");
+                }
+            }
+            catch (Exception ex)
+            {
+                ClassHelpers.DebugLogging($"[{DateTime.Now}]-[{ex}]");
+            }            
         }
 
     }

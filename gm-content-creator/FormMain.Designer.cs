@@ -43,14 +43,16 @@
             this.RichTextBoxArticleBody = new System.Windows.Forms.RichTextBox();
             this.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.CopyTextToTheClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PasteTextFromTheClipboard = new System.Windows.Forms.ToolStripMenuItem();
             this.LblBody = new System.Windows.Forms.Label();
             this.TxtBoxArticleTitle = new System.Windows.Forms.TextBox();
             this.LblTitle = new System.Windows.Forms.Label();
             this.GroupBoxArticleOptions = new System.Windows.Forms.GroupBox();
+            this.BtnExportArticle = new System.Windows.Forms.Button();
             this.BtnSpin = new System.Windows.Forms.Button();
             this.LblKeywords = new System.Windows.Forms.Label();
             this.BtnSourceArticleContent = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtBoxKeyword = new System.Windows.Forms.TextBox();
             this.Source2 = new System.Windows.Forms.RadioButton();
             this.Source1 = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -65,7 +67,6 @@
             this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.BackgroundWorkerImportSynonymsFile = new System.ComponentModel.BackgroundWorker();
             this.BackgroundWorkerSpinTax = new System.ComponentModel.BackgroundWorker();
-            this.PasteTextFromTheClipboard = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
             this.TabControl.SuspendLayout();
@@ -183,14 +184,21 @@
             this.CopyTextToTheClipboardToolStripMenuItem,
             this.PasteTextFromTheClipboard});
             this.ContextMenuStrip.Name = "ContextMenuStrip";
-            this.ContextMenuStrip.Size = new System.Drawing.Size(240, 70);
+            this.ContextMenuStrip.Size = new System.Drawing.Size(240, 48);
             // 
             // CopyTextToTheClipboardToolStripMenuItem
             // 
             this.CopyTextToTheClipboardToolStripMenuItem.Name = "CopyTextToTheClipboardToolStripMenuItem";
-            this.CopyTextToTheClipboardToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.CopyTextToTheClipboardToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
             this.CopyTextToTheClipboardToolStripMenuItem.Text = "Copy text to the clipboard ...";
             this.CopyTextToTheClipboardToolStripMenuItem.Click += new System.EventHandler(this.CopyTextToTheClipboardToolStripMenuItem_Click);
+            // 
+            // PasteTextFromTheClipboard
+            // 
+            this.PasteTextFromTheClipboard.Name = "PasteTextFromTheClipboard";
+            this.PasteTextFromTheClipboard.Size = new System.Drawing.Size(239, 22);
+            this.PasteTextFromTheClipboard.Text = "Paste text from the clipboard ...";
+            this.PasteTextFromTheClipboard.Click += new System.EventHandler(this.PasteTextFromTheClipboard_Click);
             // 
             // LblBody
             // 
@@ -221,10 +229,11 @@
             // 
             // GroupBoxArticleOptions
             // 
+            this.GroupBoxArticleOptions.Controls.Add(this.BtnExportArticle);
             this.GroupBoxArticleOptions.Controls.Add(this.BtnSpin);
             this.GroupBoxArticleOptions.Controls.Add(this.LblKeywords);
             this.GroupBoxArticleOptions.Controls.Add(this.BtnSourceArticleContent);
-            this.GroupBoxArticleOptions.Controls.Add(this.textBox1);
+            this.GroupBoxArticleOptions.Controls.Add(this.TxtBoxKeyword);
             this.GroupBoxArticleOptions.Controls.Add(this.Source2);
             this.GroupBoxArticleOptions.Controls.Add(this.Source1);
             this.GroupBoxArticleOptions.Dock = System.Windows.Forms.DockStyle.Top;
@@ -234,6 +243,16 @@
             this.GroupBoxArticleOptions.TabIndex = 0;
             this.GroupBoxArticleOptions.TabStop = false;
             this.GroupBoxArticleOptions.Text = "Options:";
+            // 
+            // BtnExportArticle
+            // 
+            this.BtnExportArticle.Location = new System.Drawing.Point(753, 58);
+            this.BtnExportArticle.Name = "BtnExportArticle";
+            this.BtnExportArticle.Size = new System.Drawing.Size(75, 23);
+            this.BtnExportArticle.TabIndex = 6;
+            this.BtnExportArticle.Text = "Export";
+            this.BtnExportArticle.UseVisualStyleBackColor = true;
+            this.BtnExportArticle.Click += new System.EventHandler(this.BtnExportArticle_Click);
             // 
             // BtnSpin
             // 
@@ -266,13 +285,13 @@
             this.BtnSourceArticleContent.Text = "Source";
             this.BtnSourceArticleContent.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // TxtBoxKeyword
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(616, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(212, 23);
-            this.textBox1.TabIndex = 2;
+            this.TxtBoxKeyword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtBoxKeyword.Location = new System.Drawing.Point(616, 28);
+            this.TxtBoxKeyword.Name = "TxtBoxKeyword";
+            this.TxtBoxKeyword.Size = new System.Drawing.Size(212, 23);
+            this.TxtBoxKeyword.TabIndex = 2;
             // 
             // Source2
             // 
@@ -416,13 +435,6 @@
             this.BackgroundWorkerSpinTax.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorkerSpinTax_DoWork);
             this.BackgroundWorkerSpinTax.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorkerSpinTax_RunWorkerCompleted);
             // 
-            // PasteTextFromTheClipboard
-            // 
-            this.PasteTextFromTheClipboard.Name = "PasteTextFromTheClipboard";
-            this.PasteTextFromTheClipboard.Size = new System.Drawing.Size(239, 22);
-            this.PasteTextFromTheClipboard.Text = "Paste text from the clipboard ...";
-            this.PasteTextFromTheClipboard.Click += new System.EventHandler(this.PasteTextFromTheClipboard_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -478,7 +490,7 @@
         private System.Windows.Forms.RadioButton Source2;
         private System.Windows.Forms.RadioButton Source1;
         private System.Windows.Forms.Button BtnSourceArticleContent;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtBoxKeyword;
         private System.Windows.Forms.ComboBox ComboBoxSynonymFile;
         private System.Windows.Forms.Label LblSelectSynonymsFile;
         private System.ComponentModel.BackgroundWorker BackgroundWorkerImportSynonymsFile;
@@ -495,5 +507,6 @@
         private System.Windows.Forms.ContextMenuStrip ContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem CopyTextToTheClipboardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem PasteTextFromTheClipboard;
+        private System.Windows.Forms.Button BtnExportArticle;
     }
 }
