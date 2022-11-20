@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
+using static gm_content_creator.SpinTax;
 
 namespace gm_content_creator
 {
@@ -102,6 +103,16 @@ namespace gm_content_creator
             {
                 ClassHelpers.DebugLogging($"[{DateTime.Now}]-[{ex}]");
             }
+        }
+
+        private void BtnSpin_Click(object sender, EventArgs e)
+        {
+            CreateSpinTax(TxtBoxArticleTitle, RichTextBoxArticleBody, DataGridSynonymsView);
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
