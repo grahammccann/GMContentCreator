@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace gm_content_creator
@@ -46,5 +48,26 @@ namespace gm_content_creator
             }
             return count;
         }
+
+        public static void HighlightSpintaxText(RichTextBox richTextBox)
+        {
+            var regex = new Regex(@"[{]([^}])+", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.Singleline);
+            var originalText = richTextBox.Text;
+            var matches = regex.Matches(richTextBox.Text);
+            var index = 0;
+            foreach (Match m in matches)
+            {
+                if (m.Success)
+                {
+                    index = originalText.IndexOf(m.Value, index) + 1;
+                    if (index != -1)
+                    {
+                        richTextBox.Select(index, m.Value.Length - 1);
+                        richTextBox.SelectionColor = Color.DarkGreen;
+                    }
+                }
+            }
+        }
+
     }
 }

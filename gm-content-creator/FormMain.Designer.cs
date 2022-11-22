@@ -247,9 +247,9 @@
             // BtnExportArticle
             // 
             this.BtnExportArticle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnExportArticle.Location = new System.Drawing.Point(753, 58);
+            this.BtnExportArticle.Location = new System.Drawing.Point(675, 27);
             this.BtnExportArticle.Name = "BtnExportArticle";
-            this.BtnExportArticle.Size = new System.Drawing.Size(75, 23);
+            this.BtnExportArticle.Size = new System.Drawing.Size(75, 25);
             this.BtnExportArticle.TabIndex = 6;
             this.BtnExportArticle.Text = "Export";
             this.BtnExportArticle.UseVisualStyleBackColor = true;
@@ -259,9 +259,9 @@
             // 
             this.BtnSpin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnSpin.ForeColor = System.Drawing.Color.Green;
-            this.BtnSpin.Location = new System.Drawing.Point(833, 58);
+            this.BtnSpin.Location = new System.Drawing.Point(754, 27);
             this.BtnSpin.Name = "BtnSpin";
-            this.BtnSpin.Size = new System.Drawing.Size(75, 23);
+            this.BtnSpin.Size = new System.Drawing.Size(75, 25);
             this.BtnSpin.TabIndex = 5;
             this.BtnSpin.Text = "Spin {|}";
             this.BtnSpin.UseVisualStyleBackColor = true;
@@ -271,7 +271,7 @@
             // 
             this.LblKeywords.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LblKeywords.AutoSize = true;
-            this.LblKeywords.Location = new System.Drawing.Point(541, 32);
+            this.LblKeywords.Location = new System.Drawing.Point(596, 60);
             this.LblKeywords.Name = "LblKeywords";
             this.LblKeywords.Size = new System.Drawing.Size(73, 15);
             this.LblKeywords.TabIndex = 4;
@@ -290,9 +290,9 @@
             // TxtBoxKeyword
             // 
             this.TxtBoxKeyword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtBoxKeyword.Location = new System.Drawing.Point(616, 28);
+            this.TxtBoxKeyword.Location = new System.Drawing.Point(675, 57);
             this.TxtBoxKeyword.Name = "TxtBoxKeyword";
-            this.TxtBoxKeyword.Size = new System.Drawing.Size(212, 23);
+            this.TxtBoxKeyword.Size = new System.Drawing.Size(233, 23);
             this.TxtBoxKeyword.TabIndex = 2;
             // 
             // Source2

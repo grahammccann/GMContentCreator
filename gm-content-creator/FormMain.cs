@@ -92,6 +92,7 @@ namespace gm_content_creator
             else
             {
                 BtnSpin.Enabled = true;
+                ClassHelpers.HighlightSpintaxText(RichTextBoxArticleBody);
                 ClassHelpers.ReturnMessage("TITLE:\n\n" + ClassHelpers.CountSpintaxBraces(TxtBoxArticleTitle.Text, '{').ToString() + " > " + ClassHelpers.CountSpintaxBraces(TxtBoxArticleTitle.Text, '}').ToString());
                 ClassHelpers.ReturnMessage("BODY:\n\n" + ClassHelpers.CountSpintaxBraces(RichTextBoxArticleBody.Text, '{').ToString() + " > " + ClassHelpers.CountSpintaxBraces(RichTextBoxArticleBody.Text, '}').ToString());
             }
