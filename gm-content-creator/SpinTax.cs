@@ -18,7 +18,7 @@ namespace gm_content_creator
 
             if (titleBox.TextLength < 1 || bodyBox.TextLength < 1)
             {
-                ClassHelpers.ReturnMessage("Please load an article first!");
+                ClassHelpers.ReturnMessage("Please load an article to be spun first!");
                 return;
             }
 

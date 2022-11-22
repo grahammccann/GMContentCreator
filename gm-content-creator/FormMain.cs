@@ -128,6 +128,18 @@ namespace gm_content_creator
 
         private void BtnSpin_Click(object sender, EventArgs e)
         {
+            if (DataGridSynonymsView.RowCount < 1)
+            {
+                ClassHelpers.ReturnMessage("Please load a synonyms file first!");
+                return;
+            }
+
+            if (TxtBoxArticleTitle.TextLength < 1 || RichTextBoxArticleBody.TextLength < 1)
+            {
+                ClassHelpers.ReturnMessage("Please load an article to be spun first!");
+                return;
+            }
+
             if (BackgroundWorkerSpinTax.IsBusy != true)
             {
                 BtnSpin.Enabled = false;
@@ -166,6 +178,8 @@ namespace gm_content_creator
                 if (!Directory.Exists(@"articles\" + TxtBoxKeyword.Text))
                 {
                     Directory.CreateDirectory(@"articles\" + TxtBoxKeyword.Text);
+                    File.WriteAllText(@"articles\" + TxtBoxKeyword.Text + "\\article.txt", TxtBoxArticleTitle.Text + Environment.NewLine + Environment.NewLine + RichTextBoxArticleBody.Text);
+                    ClassHelpers.ReturnMessage(@"articles\" + TxtBoxKeyword.Text + "\\article.txt");
                 }
                 else
                 {
