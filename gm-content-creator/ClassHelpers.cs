@@ -36,6 +36,12 @@ namespace gm_content_creator
             }
         }
 
+        /// <summary>
+        /// This function will count the number of times a character is found.
+        /// </summary>
+        /// <param name="sourceToCount"></param>
+        /// <param name="characterToCount"></param>
+        /// <returns></returns>
         public static int CountSpintaxBraces(string sourceToCount, char characterToCount) {
             int count = 0;
             try
@@ -49,6 +55,10 @@ namespace gm_content_creator
             return count;
         }
 
+        /// <summary>
+        /// This function will highlight the spintax code green.
+        /// </summary>
+        /// <param name="richTextBox"></param>
         public static void HighlightSpintaxText(RichTextBox richTextBox)
         {
             var regex = new Regex(@"[{]([^}])+", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.Singleline);
