@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Windows.Forms;
-using static gm_content_creator.SpinTax;
 
 namespace gm_content_creator
 {
@@ -19,7 +18,8 @@ namespace gm_content_creator
             try
             {
                 string html = string.Empty;
-                using (WebClient wc = new())
+                WebClient webClient = new();
+                using (WebClient wc = webClient)
                 {
                     HtmlAgilityPack.HtmlDocument doc = new();
                     doc.LoadHtml(wc.DownloadString("https://www.articleseen.com/Article_5-Tips-to-Prepare-Your-Air-Conditioner-for-Christmas-(Summer)_330327.aspx"));

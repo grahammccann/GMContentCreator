@@ -81,6 +81,12 @@ namespace gm_content_creator
             }
         }
 
+        /// <summary>
+        /// This function replaces article words with spintax from the synonyms file.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="synonymsInline"></param>
+        /// <returns></returns>
         public static string ReplaceWordsWithSynonyms(string text, IEnumerable<string> synonymsInline)
         {
 
