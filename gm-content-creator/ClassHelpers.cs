@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -77,6 +79,42 @@ namespace gm_content_creator
                     }
                 }
             }
+        }
+
+        public static string ReplaceWordsWithSynonyms(string text, IEnumerable<string> synonymsInline)
+        {
+
+            HashSet<char> punctuationSet = new() { ',', '.', '!', '?', ':' }; // trailing characters to preserve
+
+            StringBuilder newText = new();
+
+            foreach (var word in text.Split(' '))
+            {
+                string punctuation = "";
+                string newWord;
+
+                if (punctuationSet.Contains(word.LastOrDefault()))
+                {
+                    punctuation = word[word.Length - 1].ToString();
+                    newWord = word.Substring(0, word.Length - 1); // trim the punctation sign from the end
+                }
+                else
+                {
+                    newWord = word;
+                }
+
+                foreach (var line in synonymsInline)
+                {
+                    string[] synonyms = line.Split('|');
+                    if (synonyms.Select(x => x.ToLower()).Contains(newWord.ToLower()))
+                    {
+                        newWord = $"{{{line}}}{punctuation}";
+                        break;
+                    }
+                }
+                newText.Append(newWord + ' ');
+            }
+            return newText.ToString();
         }
 
     }

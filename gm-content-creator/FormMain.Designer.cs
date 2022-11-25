@@ -67,6 +67,7 @@
             this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.BackgroundWorkerImportSynonymsFile = new System.ComponentModel.BackgroundWorker();
             this.BackgroundWorkerSpinTax = new System.ComponentModel.BackgroundWorker();
+            this.ChkBoxRandomizeParagraphs = new System.Windows.Forms.CheckBox();
             this.MenuStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
             this.TabControl.SuspendLayout();
@@ -229,6 +230,7 @@
             // 
             // GroupBoxArticleOptions
             // 
+            this.GroupBoxArticleOptions.Controls.Add(this.ChkBoxRandomizeParagraphs);
             this.GroupBoxArticleOptions.Controls.Add(this.BtnExportArticle);
             this.GroupBoxArticleOptions.Controls.Add(this.BtnSpin);
             this.GroupBoxArticleOptions.Controls.Add(this.LblKeywords);
@@ -247,7 +249,7 @@
             // BtnExportArticle
             // 
             this.BtnExportArticle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnExportArticle.Location = new System.Drawing.Point(675, 27);
+            this.BtnExportArticle.Location = new System.Drawing.Point(675, 14);
             this.BtnExportArticle.Name = "BtnExportArticle";
             this.BtnExportArticle.Size = new System.Drawing.Size(75, 25);
             this.BtnExportArticle.TabIndex = 6;
@@ -259,7 +261,7 @@
             // 
             this.BtnSpin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnSpin.ForeColor = System.Drawing.Color.Green;
-            this.BtnSpin.Location = new System.Drawing.Point(754, 27);
+            this.BtnSpin.Location = new System.Drawing.Point(754, 14);
             this.BtnSpin.Name = "BtnSpin";
             this.BtnSpin.Size = new System.Drawing.Size(75, 25);
             this.BtnSpin.TabIndex = 5;
@@ -271,7 +273,7 @@
             // 
             this.LblKeywords.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LblKeywords.AutoSize = true;
-            this.LblKeywords.Location = new System.Drawing.Point(596, 60);
+            this.LblKeywords.Location = new System.Drawing.Point(596, 47);
             this.LblKeywords.Name = "LblKeywords";
             this.LblKeywords.Size = new System.Drawing.Size(73, 15);
             this.LblKeywords.TabIndex = 4;
@@ -280,7 +282,7 @@
             // BtnSourceArticleContent
             // 
             this.BtnSourceArticleContent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSourceArticleContent.Location = new System.Drawing.Point(833, 27);
+            this.BtnSourceArticleContent.Location = new System.Drawing.Point(833, 14);
             this.BtnSourceArticleContent.Name = "BtnSourceArticleContent";
             this.BtnSourceArticleContent.Size = new System.Drawing.Size(75, 25);
             this.BtnSourceArticleContent.TabIndex = 3;
@@ -290,7 +292,7 @@
             // TxtBoxKeyword
             // 
             this.TxtBoxKeyword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtBoxKeyword.Location = new System.Drawing.Point(675, 57);
+            this.TxtBoxKeyword.Location = new System.Drawing.Point(675, 44);
             this.TxtBoxKeyword.Name = "TxtBoxKeyword";
             this.TxtBoxKeyword.Size = new System.Drawing.Size(233, 23);
             this.TxtBoxKeyword.TabIndex = 2;
@@ -437,6 +439,17 @@
             this.BackgroundWorkerSpinTax.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorkerSpinTax_DoWork);
             this.BackgroundWorkerSpinTax.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorkerSpinTax_RunWorkerCompleted);
             // 
+            // ChkBoxRandomizeParagraphs
+            // 
+            this.ChkBoxRandomizeParagraphs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChkBoxRandomizeParagraphs.AutoSize = true;
+            this.ChkBoxRandomizeParagraphs.Location = new System.Drawing.Point(759, 73);
+            this.ChkBoxRandomizeParagraphs.Name = "ChkBoxRandomizeParagraphs";
+            this.ChkBoxRandomizeParagraphs.Size = new System.Drawing.Size(149, 19);
+            this.ChkBoxRandomizeParagraphs.TabIndex = 7;
+            this.ChkBoxRandomizeParagraphs.Text = "Randomize paragraphs";
+            this.ChkBoxRandomizeParagraphs.UseVisualStyleBackColor = true;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -510,5 +523,6 @@
         private System.Windows.Forms.ToolStripMenuItem CopyTextToTheClipboardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem PasteTextFromTheClipboard;
         private System.Windows.Forms.Button BtnExportArticle;
+        private System.Windows.Forms.CheckBox ChkBoxRandomizeParagraphs;
     }
 }

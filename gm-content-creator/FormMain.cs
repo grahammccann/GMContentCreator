@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Windows.Forms;
 using static gm_content_creator.SpinTax;
@@ -20,7 +21,7 @@ namespace gm_content_creator
                 string html = string.Empty;
                 using (WebClient wc = new())
                 {
-                    HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                    HtmlAgilityPack.HtmlDocument doc = new();
                     doc.LoadHtml(wc.DownloadString("https://www.articleseen.com/Article_5-Tips-to-Prepare-Your-Air-Conditioner-for-Christmas-(Summer)_330327.aspx"));
                     TxtBoxArticleTitle.Text = doc.DocumentNode.SelectSingleNode("//table[@id='tblDetails']/tr/td/h3").InnerText.Trim();
                     RichTextBoxArticleBody.Text = doc.DocumentNode.SelectSingleNode("//span[@class='Bodycontent']").InnerText;
@@ -79,7 +80,9 @@ namespace gm_content_creator
         {
             if ((string)e.Argument == "do_spintax")
             {
-                CreateSpinTax(TxtBoxArticleTitle, RichTextBoxArticleBody, DataGridSynonymsView);
+                var rows = DataGridSynonymsView.Rows.Cast<DataGridViewRow>().Select(row => row.Cells[0].Value.ToString());
+                TxtBoxArticleTitle.Text = ClassHelpers.ReplaceWordsWithSynonyms(TxtBoxArticleTitle.Text, rows);
+                RichTextBoxArticleBody.Text = ClassHelpers.ReplaceWordsWithSynonyms(RichTextBoxArticleBody.Text, rows);
             }
         }
 
@@ -93,8 +96,6 @@ namespace gm_content_creator
             {
                 BtnSpin.Enabled = true;
                 ClassHelpers.HighlightSpintaxText(RichTextBoxArticleBody);
-                ClassHelpers.ReturnMessage("TITLE:\n\n" + ClassHelpers.CountSpintaxBraces(TxtBoxArticleTitle.Text, '{').ToString() + " > " + ClassHelpers.CountSpintaxBraces(TxtBoxArticleTitle.Text, '}').ToString());
-                ClassHelpers.ReturnMessage("BODY:\n\n" + ClassHelpers.CountSpintaxBraces(RichTextBoxArticleBody.Text, '{').ToString() + " > " + ClassHelpers.CountSpintaxBraces(RichTextBoxArticleBody.Text, '}').ToString());
             }
         }
 
