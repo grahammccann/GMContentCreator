@@ -48,6 +48,7 @@
             this.TxtBoxArticleTitle = new System.Windows.Forms.TextBox();
             this.LblTitle = new System.Windows.Forms.Label();
             this.GroupBoxArticleOptions = new System.Windows.Forms.GroupBox();
+            this.ChkBoxRandomizeParagraphs = new System.Windows.Forms.CheckBox();
             this.BtnExportArticle = new System.Windows.Forms.Button();
             this.BtnSpin = new System.Windows.Forms.Button();
             this.LblKeywords = new System.Windows.Forms.Label();
@@ -67,7 +68,6 @@
             this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.BackgroundWorkerImportSynonymsFile = new System.ComponentModel.BackgroundWorker();
             this.BackgroundWorkerSpinTax = new System.ComponentModel.BackgroundWorker();
-            this.ChkBoxRandomizeParagraphs = new System.Windows.Forms.CheckBox();
             this.MenuStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
             this.TabControl.SuspendLayout();
@@ -246,6 +246,17 @@
             this.GroupBoxArticleOptions.TabStop = false;
             this.GroupBoxArticleOptions.Text = "Options:";
             // 
+            // ChkBoxRandomizeParagraphs
+            // 
+            this.ChkBoxRandomizeParagraphs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChkBoxRandomizeParagraphs.AutoSize = true;
+            this.ChkBoxRandomizeParagraphs.Location = new System.Drawing.Point(759, 73);
+            this.ChkBoxRandomizeParagraphs.Name = "ChkBoxRandomizeParagraphs";
+            this.ChkBoxRandomizeParagraphs.Size = new System.Drawing.Size(149, 19);
+            this.ChkBoxRandomizeParagraphs.TabIndex = 7;
+            this.ChkBoxRandomizeParagraphs.Text = "Randomize paragraphs";
+            this.ChkBoxRandomizeParagraphs.UseVisualStyleBackColor = true;
+            // 
             // BtnExportArticle
             // 
             this.BtnExportArticle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -288,6 +299,7 @@
             this.BtnSourceArticleContent.TabIndex = 3;
             this.BtnSourceArticleContent.Text = "Source";
             this.BtnSourceArticleContent.UseVisualStyleBackColor = true;
+            this.BtnSourceArticleContent.Click += new System.EventHandler(this.BtnSourceArticleContent_Click);
             // 
             // TxtBoxKeyword
             // 
@@ -438,17 +450,6 @@
             // 
             this.BackgroundWorkerSpinTax.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorkerSpinTax_DoWork);
             this.BackgroundWorkerSpinTax.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorkerSpinTax_RunWorkerCompleted);
-            // 
-            // ChkBoxRandomizeParagraphs
-            // 
-            this.ChkBoxRandomizeParagraphs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChkBoxRandomizeParagraphs.AutoSize = true;
-            this.ChkBoxRandomizeParagraphs.Location = new System.Drawing.Point(759, 73);
-            this.ChkBoxRandomizeParagraphs.Name = "ChkBoxRandomizeParagraphs";
-            this.ChkBoxRandomizeParagraphs.Size = new System.Drawing.Size(149, 19);
-            this.ChkBoxRandomizeParagraphs.TabIndex = 7;
-            this.ChkBoxRandomizeParagraphs.Text = "Randomize paragraphs";
-            this.ChkBoxRandomizeParagraphs.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 

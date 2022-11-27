@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace gm_content_creator
 {
-    internal class ClassHelpers
+    internal class Helpers
     {
         public const string SOFTWARE = "GM Content Creator";
 

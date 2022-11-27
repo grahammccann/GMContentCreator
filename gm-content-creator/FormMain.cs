@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace gm_content_creator
@@ -14,21 +16,32 @@ namespace gm_content_creator
             InitializeComponent();
         }
 
-        public void GetARandomArticleForTesting() {
+        public async Task GetARandomArticleForTestingAsync() {
             try
             {
                 string html = string.Empty;
-                WebClient webClient = new();
-                using (WebClient wc = webClient)
+
+                using (HttpClient client = new())
+                using (HttpResponseMessage response = await client.GetAsync("https://www.articleseen.com/Article_Tips-for-Choosing-the-Best-Car-Battery-Supplier_330400.aspx"))
+                using (HttpContent content = response.Content)
                 {
-                    HtmlAgilityPack.HtmlDocument doc = new();
-                    doc.LoadHtml(wc.DownloadString("https://www.articleseen.com/Article_5-Tips-to-Prepare-Your-Air-Conditioner-for-Christmas-(Summer)_330327.aspx"));
-                    TxtBoxArticleTitle.Text = doc.DocumentNode.SelectSingleNode("//table[@id='tblDetails']/tr/td/h3").InnerText.Trim();
-                    RichTextBoxArticleBody.Text = doc.DocumentNode.SelectSingleNode("//span[@class='Bodycontent']").InnerText;
+                    // Read the string.
+                    string result = await content.ReadAsStringAsync();
+
+                    HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                    doc.LoadHtml(result);
+
+                    // Display the result.
+                    if (result != null && result.Length >= 50)
+                    {
+                        TxtBoxArticleTitle.Text = doc.DocumentNode.SelectSingleNode("//table[@id='tblDetails']/tr/td/h3").InnerText.Trim().ToUpper();
+                        RichTextBoxArticleBody.Text = doc.DocumentNode.SelectSingleNode("//span[@class='Bodycontent']").InnerText;
+                   }
                 }
-                ClassHelpers.ReturnMessage("Random article downloaded for testing!");
+
+                Helpers.ReturnMessage("Random article downloaded for testing!");
             } catch (Exception ex) {
-                ClassHelpers.DebugLogging($"[{DateTime.Now}]-[{ex}]");
+                Helpers.DebugLogging($"[{DateTime.Now}]-[{ex}]");
             }
         }
 
@@ -42,7 +55,7 @@ namespace gm_content_creator
             }
             catch (Exception ex)
             {
-                ClassHelpers.DebugLogging($"[{DateTime.Now}]-[{ex}]");
+                Helpers.DebugLogging($"[{DateTime.Now}]-[{ex}]");
             }
         }
 
@@ -67,11 +80,11 @@ namespace gm_content_creator
         {
             if (e.Error != null)
             {
-                ClassHelpers.ReturnMessage(string.Format("Thread error: {0} ", e.Error));
+                Helpers.ReturnMessage(string.Format("Thread error: {0} ", e.Error));
             }
             else
             {
-                ClassHelpers.ReturnMessage("Import complete!");
+                Helpers.ReturnMessage("Import complete!");
             }
         }
 
@@ -81,8 +94,8 @@ namespace gm_content_creator
             if ((string)e.Argument == "do_spintax")
             {
                 var rows = DataGridSynonymsView.Rows.Cast<DataGridViewRow>().Select(row => row.Cells[0].Value.ToString());
-                TxtBoxArticleTitle.Text = ClassHelpers.ReplaceWordsWithSynonyms(TxtBoxArticleTitle.Text, rows);
-                RichTextBoxArticleBody.Text = ClassHelpers.ReplaceWordsWithSynonyms(RichTextBoxArticleBody.Text, rows);
+                TxtBoxArticleTitle.Text = Helpers.ReplaceWordsWithSynonyms(TxtBoxArticleTitle.Text, rows).ToUpper();
+                RichTextBoxArticleBody.Text = Helpers.ReplaceWordsWithSynonyms(RichTextBoxArticleBody.Text, rows);
             }
         }
 
@@ -90,24 +103,24 @@ namespace gm_content_creator
         {
             if (e.Error != null)
             {
-                ClassHelpers.ReturnMessage(string.Format("Thread error: {0} ", e.Error));
+                Helpers.ReturnMessage(string.Format("Thread error: {0} ", e.Error));
             }
             else
             {
                 BtnSpin.Enabled = true;
-                ClassHelpers.HighlightSpintaxText(RichTextBoxArticleBody);
+                Helpers.HighlightSpintaxText(RichTextBoxArticleBody);
             }
         }
 
         private void DownloadARandomArticleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GetARandomArticleForTesting();
+            _ = GetARandomArticleForTestingAsync();
         }
 
         private void BtnLoadSynonymsFile_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(ComboBoxSynonymFile.Text)) {
-                ClassHelpers.ReturnMessage("Please select a synonyms file to load!");
+                Helpers.ReturnMessage("Please select a synonyms file to load!");
                 return;
             }
 
@@ -124,7 +137,7 @@ namespace gm_content_creator
             }
             catch (Exception ex)
             {
-                ClassHelpers.DebugLogging($"[{DateTime.Now}]-[{ex}]");
+                Helpers.DebugLogging($"[{DateTime.Now}]-[{ex}]");
             }
         }
 
@@ -132,13 +145,13 @@ namespace gm_content_creator
         {
             if (DataGridSynonymsView.RowCount < 1)
             {
-                ClassHelpers.ReturnMessage("Please load a synonyms file first!");
+                Helpers.ReturnMessage("Please load a synonyms file first!");
                 return;
             }
 
             if (TxtBoxArticleTitle.TextLength < 1 || RichTextBoxArticleBody.TextLength < 1)
             {
-                ClassHelpers.ReturnMessage("Please load an article to be spun first!");
+                Helpers.ReturnMessage("Please load an article to be spun first!");
                 return;
             }
 
@@ -167,12 +180,12 @@ namespace gm_content_creator
         private void BtnExportArticle_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(TxtBoxArticleTitle.Text) || string.IsNullOrEmpty(RichTextBoxArticleBody.Text)) {
-                ClassHelpers.ReturnMessage("No article data to export!");
+                Helpers.ReturnMessage("No article data to export!");
                 return;
             }
 
             if (string.IsNullOrEmpty(TxtBoxKeyword.Text)) {
-                ClassHelpers.ReturnMessage("Enter a keyword related to your article!");
+                Helpers.ReturnMessage("Enter a keyword related to your article!");
                 return;
             }
 
@@ -181,18 +194,32 @@ namespace gm_content_creator
                 {
                     Directory.CreateDirectory(@"articles\" + TxtBoxKeyword.Text);
                     File.WriteAllText(@"articles\" + TxtBoxKeyword.Text + "\\article.txt", TxtBoxArticleTitle.Text + Environment.NewLine + Environment.NewLine + RichTextBoxArticleBody.Text);
-                    ClassHelpers.ReturnMessage(@"articles\" + TxtBoxKeyword.Text + "\\article.txt");
+                    Helpers.ReturnMessage(@"articles\" + TxtBoxKeyword.Text + "\\article.txt");
                 }
                 else
                 {
                     File.WriteAllText(@"articles\" + TxtBoxKeyword.Text + "\\article.txt", TxtBoxArticleTitle.Text + Environment.NewLine + Environment.NewLine + RichTextBoxArticleBody.Text);
-                    ClassHelpers.ReturnMessage(@"articles\" + TxtBoxKeyword.Text + "\\article.txt");
+                    Helpers.ReturnMessage(@"articles\" + TxtBoxKeyword.Text + "\\article.txt");
                 }
             }
             catch (Exception ex)
             {
-                ClassHelpers.DebugLogging($"[{DateTime.Now}]-[{ex}]");
+                Helpers.DebugLogging($"[{DateTime.Now}]-[{ex}]");
             }            
+        }
+
+        private void BtnSourceArticleContent_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(TxtBoxKeyword.Text))
+            {
+                Helpers.ReturnMessage("Enter a keyword related to your article!");
+                return;
+            }
+
+            ClassArticleSourceABC source = new()
+            {
+                searchUrl = "https://article.abc-directory.com/search/" + TxtBoxKeyword.Text
+            };
         }
 
     }
