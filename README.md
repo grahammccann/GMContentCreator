@@ -1,2 +1,2 @@
 # GMContentCreator
-Create content in spintax format for use in various softwares.
+Create content in spintax format for use in various SEO softwares.
